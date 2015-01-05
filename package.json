@@ -1,0 +1,25 @@
+{
+  "name": "stream-extra",
+  "private": true,
+  "version": "0.1.0",
+  "description": "stream extras",
+  "main": "./lib/index",
+  "scripts": {
+    "test": "mocha test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mawi12345/stream-extra"
+  },
+  "keywords": [
+    "stream",
+    "wrapper",
+    "json"
+  ],
+  "author": "Martin Wind",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mawi12345/stream-extra/issues"
+  },
+  "homepage": "https://github.com/mawi12345/stream-extra"
+}
