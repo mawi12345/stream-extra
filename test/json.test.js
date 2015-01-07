@@ -1,10 +1,9 @@
 var se = require('../lib/index')
-  , WireLogger = require('./wirelogger')
+  , endpoints = require('./duplexer').createCrossover()
   , os = require('os');
 
-var wire = new WireLogger({name: 'zipped'});
-var zippedEncoder = se.json(wire);
-var zippedDecoder = se.json(wire);
+var zippedEncoder = se.json(endpoints[0]);
+var zippedDecoder = se.json(endpoints[1]);
 
 var osStats = function() {
 	return {
@@ -27,9 +26,10 @@ zippedDecoder.on('data', function(object){
 	console.dir(object);
 });
 
-var wireSimple = new WireLogger({name: 'simple'});
-var simpleEncoder = new se.JsonWrapper(new se.BufferedWrapper(wireSimple));
-var simpleDecoder = new se.JsonWrapper(new se.BufferedWrapper(wireSimple));
+var simpleEndpoints = require('./duplexer').createCrossover({name: 'S>'}, {name: 'S<'});
+
+var simpleEncoder = new se.JsonWrapper(new se.BufferedWrapper(simpleEndpoints[0]));
+var simpleDecoder = new se.JsonWrapper(new se.BufferedWrapper(simpleEndpoints[1]));
 
 simpleEncoder.write(osStats());
 

@@ -1,9 +1,8 @@
-var WireLogger = require('./wirelogger')
+var endpoints = require('./duplexer').createCrossover()
   , JsonWrapper = require('../lib/buffered/json');
 
-var wire = new WireLogger();
-var encoder = new JsonWrapper(wire);
-var decoder = new JsonWrapper(wire);
+var encoder = new JsonWrapper(endpoints[0]);
+var decoder = new JsonWrapper(endpoints[1]);
 
 var object = {
 	'hello': 'world'

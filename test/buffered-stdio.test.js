@@ -1,9 +1,8 @@
-var WireLogger = require('./wirelogger')
+var endpoints = require('./duplexer').createCrossover()
   , BufferedWrapper = require('../lib/buffered');
 
-var wire = new WireLogger();
-var encoder = new BufferedWrapper(wire);
-var decoder = new BufferedWrapper(wire);
+var encoder = new BufferedWrapper(endpoints[0]);
+var decoder = new BufferedWrapper(endpoints[1]);
 
 decoder.pipe(process.stdout);
 process.stdin.pipe(encoder);
