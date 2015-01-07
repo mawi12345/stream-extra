@@ -1,9 +1,8 @@
 var endpoints = require('./duplexer').createCrossover()
   , MuxWrapper = require('../lib/mux');
 
-
-var encoder = new MuxWrapper(endpoints[0]);
-var decoder = new MuxWrapper(endpoints[1]);
+var server = new MuxWrapper(endpoints[0]);
+var client = new MuxWrapper(endpoints[1]);
 
 process.stdin.pipe(encoder.createStream(2));
 
