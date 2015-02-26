@@ -28,8 +28,8 @@ zippedDecoder.on('data', function(object){
 
 var simpleEndpoints = require('./duplexer').createCrossover({name: 'S>'}, {name: 'S<'});
 
-var simpleEncoder = new se.JsonWrapper(new se.BufferedWrapper(simpleEndpoints[0]));
-var simpleDecoder = new se.JsonWrapper(new se.BufferedWrapper(simpleEndpoints[1]));
+var simpleEncoder = new se.Buffered.Json(new se.Buffered(simpleEndpoints[0]));
+var simpleDecoder = new se.Buffered.Json(new se.Buffered(simpleEndpoints[1]));
 
 simpleEncoder.write(osStats());
 
