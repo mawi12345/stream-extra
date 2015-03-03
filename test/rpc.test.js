@@ -78,3 +78,8 @@ remoteClient.call('mkprogress', {count: 8})
     // We get notified of the progress as it is executed
 	console.log('server received clinet.mkprogress() progress: '+progress);
 });
+
+setTimeout(function(){
+	console.log('calling end');
+	remoteClient.end();
+}, 1500)
