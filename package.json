@@ -1,11 +1,15 @@
 {
   "name": "stream-extra",
   "private": true,
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "stream extras",
   "main": "./lib/index",
   "scripts": {
-    "test": "mocha test"
+    "lint": "./node_modules/.bin/jshint lib --reporter=./node_modules/jshint-full-path/index.js",
+    "checkStyle": "./node_modules/.bin/jscs lib",
+    "pretest": "npm run-script lint && npm run-script checkStyle",
+    "test": "./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha -- --recursive -R spec -r should",
+    "posttest": "./node_modules/.bin/istanbul check-coverage"
   },
   "repository": {
     "type": "git",
@@ -26,5 +30,13 @@
     "buffers": "^0.1.1",
     "debug": "^2.2.0",
     "q": "^1.1.2"
+  },
+  "devDependencies": {
+    "istanbul": "^0.3.19",
+    "jscs": "^2.1.1",
+    "jshint": "^2.8.0",
+    "jshint-full-path": "^1.1.1",
+    "mocha": "^2.3.0",
+    "should": "^7.1.0"
   }
 }
