@@ -4,6 +4,7 @@
 
 'use strict';
 
+var ZlibWrapper = require('../lib/buffered/zlib');
 var bufferedTestFactory = require('./spec/buffered');
 var BufferedWrapper = require('../lib/buffered');
 var EventEmitter = require('events').EventEmitter;
@@ -11,10 +12,10 @@ var spam = require('./helpers').spam;
 var noop = function() {
 };
 
-describe('BufferedWrapper', function() {
+describe('ZlibWrapper', function() {
 
-  bufferedTestFactory(BufferedWrapper, function(source, options) {
-    return new BufferedWrapper(source, options);
+  bufferedTestFactory(ZlibWrapper, function(source, options) {
+    return new ZlibWrapper(new BufferedWrapper(source, options), options);
   });
 
   it('should stop the source if the consumer does not want more data', function(done) {
@@ -33,7 +34,7 @@ describe('BufferedWrapper', function() {
       }
     };
 
-    var bufferedStream = new BufferedWrapper(mock);
+    var bufferedStream = new ZlibWrapper(new BufferedWrapper(mock));
     var bigChunk = new Buffer(spam('hello world'));
     hasStarted = true;
     mock.emit('data', bigChunk);
