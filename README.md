@@ -74,7 +74,7 @@ server.listen(port, function() {
 ```javascript
 {
   lengthEncoding: 2, // the size in bytes of the length header
-                     // possible values: 1, 2 und 4
+                     // possible values: 1, 2 and 4
 }
 ```
 
@@ -85,7 +85,7 @@ var Mux = require('stream-extra').Mux
 var multiplexedStream = new Mux(socket, options);
 ```
 
-The Mux wrapper is API compatible to the Buffered wrapper and adds the possibility of multiplexing to the stream. To distinguish the multiplexed streams a additional `id` header is added to every chunk.
+The Mux wrapper is API compatible to the Buffered wrapper and adds the possibility of multiplexing the stream. To distinguish the multiplexed streams a additional `id` header is added to every chunk.
 
 #### Example
 
@@ -151,6 +151,16 @@ interval3 = setInterval(function() {
   stream3.write('hello stream 3');
   maybestop();
 }, 900);
+```
+
+#### Options
+
+```javascript
+{
+  lengthEncoding: 2, // the size in bytes of the length header
+  idEncoding: 2,     // the size in bytes of the id header
+                     // possible values for both options: 1, 2 and 4
+}
 ```
 
 ## ZLib
