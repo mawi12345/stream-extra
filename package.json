@@ -28,6 +28,7 @@
   "homepage": "https://github.com/mawi12345/stream-extra",
   "dependencies": {
     "buffers": "^0.1.1",
+    "crc": "^3.3.0",
     "debug": "^2.2.0",
     "q": "^1.1.2"
   },
