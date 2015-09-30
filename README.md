@@ -85,7 +85,7 @@ var Mux = require('stream-extra').Mux
 var multiplexedStream = new Mux(socket, options);
 ```
 
-The Mux wrapper is API compatible to the Buffered wrapper and adds the possibility of multiplexing the stream. To distinguish the multiplexed streams a additional `id` header is added to every chunk.
+The Mux wrapper adds the possibility of multiplexing the stream. To distinguish the multiplexed streams a additional `id` header is added to every chunk.
 
 #### Example
 
