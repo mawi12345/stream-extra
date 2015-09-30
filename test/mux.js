@@ -5,7 +5,8 @@
 'use strict';
 
 var bufferedTestFactory = require('./spec/buffered');
-var MuxWrapper = require('../lib/mux');
+var MuxWrapper = require('../lib/buffered/mux');
+var BufferedWrapper = require('../lib/buffered');
 var assert = require('assert');
 var PassThrough = require('stream').PassThrough;
 
@@ -13,7 +14,7 @@ describe('MuxWrapper', function() {
 
   // as mux is also buffered it should pass all buffered tests.
   bufferedTestFactory(MuxWrapper, function(source, options) {
-    return new MuxWrapper(source, options);
+    return new MuxWrapper(new BufferedWrapper(source, options), options);
   });
 
   it('should provide multiple streams', function(done) {

@@ -1,11 +1,13 @@
 'use strict';
-var Mux = require('../lib/mux');
+
+var Buffered = require('../lib/buffered');
+var Mux = require('../lib/buffered/mux');
 
 // imitate a socket connection with an PassThrough stream.
 var PassThrough = require('stream').PassThrough;
 var passThrough = new PassThrough();
-var server = new Mux(passThrough);
-var client = new Mux(passThrough);
+var server = new Mux(new Buffered(passThrough));
+var client = new Mux(new Buffered(passThrough));
 
 client.on('data', function(data) {
   console.log('client:  ' + data);
@@ -39,9 +41,9 @@ var maybestop = function() {
     clearInterval(interval1);
     clearInterval(interval2);
     clearInterval(interval3);
-    client.end();
     stream2.end();
     stream3.end();
+    client.end();
   }
 };
 
