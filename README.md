@@ -1,5 +1,7 @@
 # stream-extra
 
+[![Join the chat at https://gitter.im/mawi12345/stream-extra](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/mawi12345/stream-extra?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 The missing Duplex stream wrappers.
 
     npm install mawi12345/stream-extra
